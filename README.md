@@ -1,14 +1,14 @@
 # Customer_Segmentation_application
 This app has been built using Streamlit and deployed with Streamlit community cloud
 
-[Visit the app here](https://real-estate-price-predictor-app.streamlit.app/)
+[Visit the app here](https://customer-segmentation-model.streamlit.app/)
 
-This application predicts the fair transaction price of a property before it's sold within a small county in New York state based on a dataset for transaction prices for previously sold properties on the market. The model aims to predict transaction prices with an average error of under $70,000.
+This application divide the customers into various groups.
 
 ## Features
 - User-friendly interface powered by Streamlit.
-- Input form to enter details such as property_tax, insurance, beds, baths, Bunglow/Condo, and other relevant factors.
-- Real-time prediction of property price based on the trained model. Mean Absolute Error (MAE) < $70,000
+- Input form to enter details such as age, income, and spending_score.
+- Real-time prediction of customer group.
 - Accessible via Streamlit Community Cloud.
 
 ## Dataset
