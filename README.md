@@ -1,4 +1,4 @@
-# real_estate_price_application
+# Customer_Segmentation_application
 This app has been built using Streamlit and deployed with Streamlit community cloud
 
 [Visit the app here](https://real-estate-price-predictor-app.streamlit.app/)
@@ -12,18 +12,11 @@ This application predicts the fair transaction price of a property before it's s
 - Accessible via Streamlit Community Cloud.
 
 ## Dataset
-The application is trained on the **Real Estate dataset**, a dataset of transaction prices for previously sold properties on the market. It includes features like:
-- Year_sold
-- Property_tax
-- Insurance
-- Beds
-- Baths
-- Sqft
-- Year_built
-- Lot_size
-- Basement
-- Property_type
-- And other factors influencing price.
+The application is trained on the **Mall Customer dataset**, a dataset of customers' characteristics and their consumption behavior. It includes features like:
+- Gender: Gender of the customer
+- Age: Age of the customer
+- Income: Annual Income of the customers in 1000 dollars
+- Spending_Score: Score assigned between 1-100 by the mall based on customer' spending behavior.
 
 
 ## Technologies Used
@@ -33,7 +26,7 @@ The application is trained on the **Real Estate dataset**, a dataset of transact
 - **Matplotlib** and **Seaborn**: For exploratory data analysis and visualization (if applicable).
 
 ## Model
-The predictive model is trained using the real estate dataset. It applies preprocessing steps like adding domain features and encoding categorical variables. The Decision Tree regression model is used.
+The predictive model is trained using the Mall Customer data. The Unsupervised Clustering K-means model is used.
 
 
-#### Thank you for using the Real Estate Price Application! Feel free to share your feedback.
+#### Thank you for using the Customer Segmentation Application! Feel free to share your feedback.
