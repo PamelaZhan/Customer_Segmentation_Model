@@ -60,6 +60,7 @@ if submitted:
     
 
 st.write(
-    """We used a machine learning (k-mean clustering) model to group customers. The elbow plot is shown as followed."""
+    """We used a machine learning (k-mean clustering) model to group customers (6 clusters). The elbow plot is shown as followed."""
 )
+st.image("clusters_on_two_features.png")
 st.image("elbow.png")
