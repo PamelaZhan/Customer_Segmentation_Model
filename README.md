@@ -18,7 +18,6 @@ The application is trained on the **Mall Customer dataset**, a dataset of custom
 - Income: Annual Income of the customers in 1000 dollars
 - Spending_Score: Score assigned between 1-100 by the mall based on customer' spending behavior.
 
-
 ## Technologies Used
 - **Streamlit**: For building the web application.
 - **Scikit-learn**: For model training and evaluation.
@@ -27,6 +26,5 @@ The application is trained on the **Mall Customer dataset**, a dataset of custom
 
 ## Model
 The predictive model is trained using the Mall Customer data. The Unsupervised Clustering K-means model is used.
-
 
 #### Thank you for using the Customer Segmentation Application! Feel free to share your feedback.

@@ -1,6 +1,4 @@
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 import pickle
 import streamlit as st
 
@@ -20,17 +18,20 @@ with open("models/Kmodel.pkl", "rb") as pkl:
 with st.form("user_inputs"):
     st.subheader("Custermer Details")
     
-    # Gender input
-    Gender = st.selectbox("Gender", options=["Male", "Female"])
-
-    # Age
-    Age = st.slider("Age", min_value=18, max_value=95)
-
-    # Customer Income
-    Income = st.slider("Annual Income (in 1000 dollars)", min_value=0, max_value=200)
+    # create 2 columns
+    col1, col2 = st.columns(2)
     
-    # Spending Score
-    Spending_Score = st.slider("Spending Score", min_value=0, max_value=100)
+    with col1:
+        # Gender input
+        Gender = st.selectbox("Gender", options=["Male", "Female"])
+        # Age
+        Age = st.slider("Age", min_value=18, max_value=95, value=38)
+
+    with col2:
+        # Customer Income
+        Income = st.slider("Annual Income (in 1000 dollars)", min_value=0, max_value=200, value=60)    
+        # Spending Score
+        Spending_Score = st.slider("Spending Score", min_value=0, max_value=100, value=50)
     
     # Submit button
     submitted = st.form_submit_button("Predict Customer Cluster")
@@ -45,8 +46,6 @@ if submitted:
     # deal dummy feature
     Gender_Male = 1 if Gender == "Male" else 0
     Gender_Female = 1 if Gender == "Female" else 0
-    
-
 
     # Prepare the input for prediction. This has to go in the same order as it was trained
     prediction_input = pd.DataFrame([[age, income, spending_score, Gender_Female, Gender_Male]])
@@ -56,11 +55,17 @@ if submitted:
 
     # Display result
     st.subheader("Prediction Result:")
-    st.write(f"The customer cluster number: {new_prediction[0]}")
-    
+    st.write(f"The customer should be assigned to cluster: {new_prediction[0]}")
 
-st.write(
-    """We used a machine learning (k-mean clustering) model to group customers (6 clusters). The elbow plot is shown as followed."""
-)
-st.image("clusters_on_two_features.png")
+# centroids of the Kmeans model    
+centers = pd.DataFrame(k_model.cluster_centers_.astype(int), 
+                       columns=['Age',	'Annual_Income',	'Spending_Score',	'Gender_Female',	'Gender_Male'])
+# display the centroids
+st.write("A K-mean clustering model is used to group customers into 6 clusters.")
+st.image("clusters.png")
+st.write("Cluster centers (centroids):")
+st.table(centers)
+st.write("The elbow plot is shown as followed.")
 st.image("elbow.png")
+st.write("The Silhouette plot is shown as followed.")
+st.image("silhouette.png")
