@@ -36,6 +36,10 @@ with st.form("user_inputs"):
     # Submit button
     submitted = st.form_submit_button("Predict Customer Cluster")
 
+# meaningful names for clusters
+group_names = ["Young High-Earner Big-Spender", "Middle-Aged High-Earner Frugal", "Young Low-Earner Big-Spender", 
+                   "Senior Moderate-Earner Balanced-Spender","Young Moderate-Earner Balanced-Spender", "Middle-Aged Low-Earner Frugal"]
+
 # Handle the dummy variables to pass to the model
 if submitted:
     # convert to integers
@@ -51,15 +55,16 @@ if submitted:
     prediction_input = pd.DataFrame([[age, income, spending_score, Gender_Female, Gender_Male]])
 
     # Make prediction
-    new_prediction = k_model.predict(prediction_input)
+    new_prediction = k_model.predict(prediction_input)    
 
     # Display result
     st.subheader("Prediction Result:")
-    st.write(f"The customer should be assigned to cluster: {new_prediction[0]}")
+    st.write(f"The customer should be assigned to group: {group_names[new_prediction[0]]}")
 
 # centroids of the Kmeans model    
 centers = pd.DataFrame(k_model.cluster_centers_.astype(int), 
                        columns=['Age',	'Annual_Income',	'Spending_Score',	'Gender_Female',	'Gender_Male'])
+centers.insert(loc=0, column='Group Name', value=group_names)
 # display the centroids
 st.write("A K-mean clustering model is used to group customers into 6 clusters.")
 st.image("clusters.png")
